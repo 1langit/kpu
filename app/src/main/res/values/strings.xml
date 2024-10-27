@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">KPU</string>
+
+    <string name="information">Informasi</string>
+    <string name="form">Form Entry</string>
+    <string name="show_list">Lihat Data</string>
+    <string name="logout">Keluar</string>
+
+    <string name="back">Kembali</string>
+    <string name="voters">Calon Pemilih</string>
+    <string name="voter_data">Data Pemilih</string>
+    <string name="form_submitted">Data disimpan</string>
+    <string name="form_cannot_blank">Semua data wajib diisi</string>
+    <string name="nik_existed">NIK sudah terdaftar</string>
+    <string name="address_permission_not_granted">Alamat tidak dapat diisi otomatis</string>
+    <string name="capture_image">Ambil gambar</string>
+    <string name="peck_image">Pilih gambar</string>
+    <string name="search">Cari nama atau NIK</string>
+    <string name="empty_search">Entri tidak ditemukan</string>
+    <string name="create">Buat Baru</string>
+
+    <string name="nik">NIK</string>
+    <string name="name">Nama</string>
+    <string name="phone">No. HP</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="male">Laki-laki</string>
+    <string name="female">Perempuan</string>
+    <string name="date">Tanggal</string>
+    <string name="address">Alamat</string>
+    <string name="image">Gambar</string>
+    <string name="submit">Simpan</string>
+
+    <string name="information_content">
+        Pemilihan umum (Pemilu) adalah proses pemilihan untuk memilih sebagian besar atau seluruh anggota suatu badan terpilih badan legislatif dan presiden yang dipilih secara langsung oleh masyarakat.
+        \n\nPengertian Pemilu di Indonesia sepenuhnya mengacu kepada undang-undang. Sperti pada Undang-Undang No. 7 Tahun 2017 Tentang Pemilihan Umum, yang disebut Pemilu adalah sarana kedaulatan rakyat untuk memilih anggota Dewan Perwakilan Rakyat (DPR), anggota Dewan Perwakilan Daerah (DPD), Presiden dan Wakil Presiden, dan untuk memilih anggota Dewan Perwakilan Rakyat Daerah (DPRD), yang dilaksanakan secara langsung, umum, bebas, rahasra, jujur, dan adil dalam Negara Kesatuan Republik Indonesia berdasarkan Pancasila dan Undang-Undang Dasar Negara Republik Indonesia Tahun 1945.
+        \n\nPemilu merupakan salah satu usaha untuk memengaruhi rakyat secara persuasif (tidak memaksa) dengan melakukan kegiatan retorika, hubungan publik, komunikasi massa, lobi dan lain-lain kegiatan. Meskipun agitasi dan propaganda di negara demokrasi sangat dikecam, namun dalam kampanye Pemilu, teknik agitasi dan teknik propaganda banyak digunakan kandidat atau peserta Pemilu selaku komunikator politik.
+        \n\nUntuk menjaga persatuan masyarakat meskipun terdapat perbedaan pandangan politik serta menghindari kritik terhadap teknik agitasi dan propaganda yang harus dilakukan kandidat, peserta Pemilu, atau komunikator politik menggunakan cara tatap muka, memberikan informasi yang jelas, menggunakan komunikasi verbal, aktif mendengarkan masukan positif dari masyarakat, bertanya, mengendalikan emosi dan diplomasi.
+        \n\nDalam Pemilu, para pemilih disebut konstituen, kepada merekalah peserta Pemilu menawarkan janji-janji dan program-programnya pada masa kampanye. Kampanye dilakukan selama waktu yang telah ditentukan, menjelang hari pemungutan suara.
+        \n\nDalam UU No. 7 / 2017 pemilih adalah Warga Negara Indonesia (WNI) yang sudah genap berumur 17 (tqjuh belas) tahun atau lebih, sudah kawin, atau sudah pemah kawin. Sedangkan kampanye adalah kegiatan peserta pemilu atau pihak lain yang ditunjuk oleh peserta Pemilu untuk meyakinkan Pemilih dengan menawarkan visi, misi, program dan/atau citra diri Peserta Pemilu.
+        \n\nSetelah pemungutan suara dilakukan, proses penghitungan dimulai. Pemenang Pemilu ditentukan oleh aturan main atau sistem penentuan pemenang yang sebelumnya telah ditetapkan dan disetujui oleh para peserta, dan disosialisasikan ke para pemilih
+    </string>
+</resources>
