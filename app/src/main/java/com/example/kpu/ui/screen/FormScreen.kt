@@ -85,10 +85,18 @@ fun FormScreen(onBackClick: () -> Unit = {}, onSubmitClick: (Entry) -> Unit = {}
                 .getFusedLocationProviderClient(context)
                 .lastLocation
                 .addOnSuccessListener { location ->
-                    Geocoder(context, Locale.getDefault())
-                        .getAddress(location.latitude, location.longitude) { addresses ->
-                            form.address = addresses?.getAddressLine(0) ?: ""
-                        }
+                    if (location != null) {
+                        Geocoder(context, Locale.getDefault())
+                            .getAddress(location.latitude, location.longitude) { addresses ->
+                                form.address = addresses?.getAddressLine(0) ?: ""
+                            }
+                    } else {
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.location_fail),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
         } else {
             Toast.makeText(

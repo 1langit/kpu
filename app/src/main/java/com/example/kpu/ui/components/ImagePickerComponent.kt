@@ -144,7 +144,7 @@ fun MyModalBottomSheet(
                 }
             ),
             BottomSheetItem(
-                title = stringResource(R.string.peck_image),
+                title = stringResource(R.string.pick_image),
                 icon = Icons.Outlined.Image,
                 onClick = {
                     onPhotoGalleryClick.invoke()

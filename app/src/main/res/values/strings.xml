@@ -5,19 +5,34 @@
     <string name="form">Form Entry</string>
     <string name="show_list">Lihat Data</string>
     <string name="logout">Keluar</string>
+    <string name="login">Login</string>
+    <string name="login_desc">Masuk ke aplikasi KPU</string>
 
-    <string name="back">Kembali</string>
-    <string name="voters">Calon Pemilih</string>
-    <string name="voter_data">Data Pemilih</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="hide_password">Sembunyikan password</string>
+    <string name="show_password">Tampilkan password</string>
+    <string name="login_success">Login berhasil</string>
+    <string name="login_fail">Username atau password salah</string>
+
     <string name="form_submitted">Data disimpan</string>
     <string name="form_cannot_blank">Semua data wajib diisi</string>
     <string name="nik_existed">NIK sudah terdaftar</string>
     <string name="address_permission_not_granted">Alamat tidak dapat diisi otomatis</string>
+    <string name="location_fail">Gagal mengambil info lokasi</string>
     <string name="capture_image">Ambil gambar</string>
-    <string name="peck_image">Pilih gambar</string>
+    <string name="pick_image">Pilih gambar</string>
+
     <string name="search">Cari nama atau NIK</string>
     <string name="empty_search">Entri tidak ditemukan</string>
     <string name="create">Buat Baru</string>
+
+    <string name="delete">Hapus</string>
+    <string name="cancel">Batal</string>
+    <string name="confirm_delete">Hapus Data?</string>
+    <string name="confirm_delete_desc">Data calon pemilih yang dihapus tidak dapat dikembalikan</string>
+    <string name="delete_success">Hapus data berhasil</string>
+    <string name="delete_fail">Gagal menghapus data</string>
 
     <string name="nik">NIK</string>
     <string name="name">Nama</string>
@@ -29,6 +44,10 @@
     <string name="address">Alamat</string>
     <string name="image">Gambar</string>
     <string name="submit">Simpan</string>
+
+    <string name="back">Kembali</string>
+    <string name="voters">Calon Pemilih</string>
+    <string name="voter_data">Data Pemilih</string>
 
     <string name="information_content">
         Pemilihan umum (Pemilu) adalah proses pemilihan untuk memilih sebagian besar atau seluruh anggota suatu badan terpilih badan legislatif dan presiden yang dipilih secara langsung oleh masyarakat.

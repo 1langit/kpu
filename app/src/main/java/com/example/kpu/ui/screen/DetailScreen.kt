@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.outlined.DateRange
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Female
 import androidx.compose.material.icons.outlined.Image
 import androidx.compose.material.icons.outlined.LocationOn
@@ -28,16 +29,22 @@ import androidx.compose.material.icons.outlined.Male
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Person2
 import androidx.compose.material.icons.outlined.Phone
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
@@ -51,7 +58,14 @@ import com.example.kpu.data.Entry
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(entry: Entry, onBackClick: () -> Unit = {}) {
+fun DetailScreen(
+    entry: Entry,
+    onDeleteEntry: (Entry) -> Unit = {},
+    onBackClick: () -> Unit = {}
+) {
+
+    val showDeleteDialog = remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -61,6 +75,15 @@ fun DetailScreen(entry: Entry, onBackClick: () -> Unit = {}) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                             contentDescription = stringResource(R.string.back)
+                        )
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { showDeleteDialog.value = true }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Delete,
+                            contentDescription = stringResource(R.string.delete),
+                            tint = MaterialTheme.colorScheme.error
                         )
                     }
                 },
@@ -144,6 +167,35 @@ fun DetailScreen(entry: Entry, onBackClick: () -> Unit = {}) {
                 )
             }
         }
+    }
+
+    if (showDeleteDialog.value) {
+        AlertDialog(
+            title = { Text(text = stringResource(R.string.confirm_delete)) },
+            text = { Text(text = stringResource(R.string.confirm_delete_desc)) },
+            onDismissRequest = { showDeleteDialog.value = false },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        onDeleteEntry(entry)
+                        showDeleteDialog.value = false
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.error
+                    )
+                ) {
+                    Text(text = stringResource(R.string.delete))
+                }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = { showDeleteDialog.value = false }) {
+                    Text(
+                        text = stringResource(R.string.cancel),
+                        color = MaterialTheme.colorScheme.outline
+                    )
+                }
+            }
+        )
     }
 }
 

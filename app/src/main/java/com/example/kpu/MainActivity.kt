@@ -24,6 +24,7 @@ import com.example.kpu.ui.screen.DetailScreen
 import com.example.kpu.ui.screen.FormScreen
 import com.example.kpu.ui.screen.InfoScreen
 import com.example.kpu.ui.screen.ListScreen
+import com.example.kpu.ui.screen.LoginScreen
 import com.example.kpu.ui.theme.KPUTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +39,20 @@ class MainActivity : ComponentActivity() {
             KPUTheme {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = Screen.Dashboard) {
+
+                    composable<Screen.Login> {
+                        LoginScreen { username, password ->
+                            viewModel.loginUser(username, password) { result ->
+                                showOperationResult(
+                                    result = result,
+                                    onSuccess = { navController.navigate(Screen.Dashboard) },
+                                    successText = getString(R.string.login_success),
+                                    failureText = getString(R.string.login_fail)
+                                )
+                            }
+                        }
+                    }
+
                     composable<Screen.Dashboard> {
                         DashboardScreen(
                             onInfoNavigate = { navController.navigate(Screen.Info) },
@@ -55,21 +70,13 @@ class MainActivity : ComponentActivity() {
                         FormScreen(
                             onBackClick = { navController.navigateUp() },
                             onSubmitClick = {
-                                viewModel.addEntry(it) { isSuccess ->
-                                    if (isSuccess) {
-                                        Toast.makeText(
-                                            this@MainActivity,
-                                            getString(R.string.form_submitted),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        navController.navigateUp()
-                                    } else {
-                                        Toast.makeText(
-                                            this@MainActivity,
-                                            getString(R.string.nik_existed),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
+                                viewModel.addEntry(it) { result ->
+                                    showOperationResult(
+                                        result = result,
+                                        onSuccess = { navController.navigateUp() },
+                                        successText = getString(R.string.form_submitted),
+                                        failureText = getString(R.string.nik_existed)
+                                    )
                                 }
                             }
                         )
@@ -84,14 +91,46 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    composable<Entry> {
+                    composable<Entry> { selectedEntry ->
                         DetailScreen(
-                            entry = it.toRoute<Entry>(),
+                            entry = selectedEntry.toRoute<Entry>(),
+                            onDeleteEntry = {
+                                viewModel.deleteEntry(it) { result ->
+                                    showOperationResult(
+                                        result = result,
+                                        onSuccess = { navController.navigateUp() },
+                                        successText = getString(R.string.delete_success),
+                                        failureText = getString(R.string.delete_fail)
+                                    )
+                                }
+                            },
                             onBackClick = { navController.navigateUp() }
                         )
                     }
                 }
             }
+        }
+    }
+
+    private fun showOperationResult(
+        result: Result<Unit>,
+        onSuccess: () -> Unit,
+        successText: String,
+        failureText: String
+    ) {
+        if (result.isSuccess) {
+            Toast.makeText(
+                this@MainActivity,
+                successText,
+                Toast.LENGTH_SHORT
+            ).show()
+            onSuccess()
+        } else {
+            Toast.makeText(
+                this@MainActivity,
+                failureText,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
