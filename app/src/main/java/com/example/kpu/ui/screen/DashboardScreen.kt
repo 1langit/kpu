@@ -51,14 +51,6 @@ fun DashboardScreen(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 )
             )
-        },
-        bottomBar = {
-            Surface(
-                color = MaterialTheme.colorScheme.primaryContainer,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "")
-            }
         }
     ) { innerPadding ->
         Column(

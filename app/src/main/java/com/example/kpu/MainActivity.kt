@@ -38,14 +38,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             KPUTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Screen.Dashboard) {
+                NavHost(navController = navController, startDestination = Screen.Login) {
 
                     composable<Screen.Login> {
                         LoginScreen { username, password ->
                             viewModel.loginUser(username, password) { result ->
                                 showOperationResult(
                                     result = result,
-                                    onSuccess = { navController.navigate(Screen.Dashboard) },
+                                    onSuccess = {
+                                        navController.navigate(Screen.Dashboard) {
+                                            popUpTo(Screen.Login) {
+                                                inclusive = true
+                                            }
+                                        }
+                                    },
                                     successText = getString(R.string.login_success),
                                     failureText = getString(R.string.login_fail)
                                 )

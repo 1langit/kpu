@@ -1,6 +1,5 @@
 package com.example.kpu.ui.screen
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,67 +40,69 @@ fun LoginScreen(onLogin: (String, String) -> Unit) {
     var password by rememberSaveable { mutableStateOf("") }
     var isPasswordVisible by remember { mutableStateOf(false) }
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(20.dp)
-    ) {
-        Text(
-            text = stringResource(R.string.login),
-            style = MaterialTheme.typography.headlineSmall
-        )
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(text = stringResource(R.string.login_desc))
-        Spacer(modifier = Modifier.height(40.dp))
-        OutlinedTextField(
-            label = { Text(text = stringResource(R.string.username)) },
-            value = username,
-            onValueChange = { username = it },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Email
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
-        OutlinedTextField(
-            label = { Text(text = stringResource(R.string.password)) },
-            value = password,
-            onValueChange = { password = it },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Password,
-                imeAction = ImeAction.Done
-            ),
-            visualTransformation = if (isPasswordVisible) {
-                VisualTransformation.None
-            } else {
-                PasswordVisualTransformation()
-            },
-            trailingIcon = {
-                IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
-                    Icon(
-                        imageVector = if (isPasswordVisible) {
-                            Icons.Outlined.VisibilityOff
-                        } else {
-                            Icons.Outlined.Visibility
-                        },
-                        contentDescription = if (isPasswordVisible) {
-                            stringResource(R.string.hide_password)
-                        } else {
-                            stringResource(R.string.show_password)
-                        }
-                    )
-                }
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(40.dp))
-        Button(
-            onClick = { onLogin(username, password) },
-            modifier = Modifier.fillMaxWidth()
+    Surface {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
         ) {
-            Text(text = stringResource(R.string.login))
+            Spacer(modifier = Modifier.height(60.dp))
+            Text(
+                text = stringResource(R.string.login),
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(text = stringResource(R.string.login_desc))
+            Spacer(modifier = Modifier.height(40.dp))
+            OutlinedTextField(
+                label = { Text(text = stringResource(R.string.username)) },
+                value = username,
+                onValueChange = { username = it },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+            OutlinedTextField(
+                label = { Text(text = stringResource(R.string.password)) },
+                value = password,
+                onValueChange = { password = it },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Password,
+                ),
+                visualTransformation = if (isPasswordVisible) {
+                    VisualTransformation.None
+                } else {
+                    PasswordVisualTransformation()
+                },
+                trailingIcon = {
+                    IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
+                        Icon(
+                            imageVector = if (isPasswordVisible) {
+                                Icons.Outlined.VisibilityOff
+                            } else {
+                                Icons.Outlined.Visibility
+                            },
+                            contentDescription = if (isPasswordVisible) {
+                                stringResource(R.string.hide_password)
+                            } else {
+                                stringResource(R.string.show_password)
+                            }
+                        )
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(40.dp))
+            Button(
+                onClick = { onLogin(username, password) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = stringResource(R.string.login))
+            }
         }
     }
 }
